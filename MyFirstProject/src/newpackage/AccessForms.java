@@ -88,16 +88,16 @@ public class AccessForms {
 		}*/
 		
 		//Explicit & Fluent wait
-		/*String underConst= "Under Construction: Mercury Tours";
-		Wait waitFluent = new FluentWait(driver)							
+		String underConst= "Under Construction: Mercury Tours";
+		/*Wait waitFluent = new FluentWait(driver)							
 				.withTimeout(30, TimeUnit.SECONDS) 			
-				.pollingEvery(5, TimeUnit.SECONDS);	
+				.pollingEvery(5, TimeUnit.SECONDS);*/	
 		
 		WebDriverWait wait = new WebDriverWait(driver,20);		
 		driver.get("http://demo.guru99.com/selenium/newtours/");
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
 		
-		waitFluent.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
+		//waitFluent.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
 		int i=0;
 		List<WebElement> allLinks= driver.findElements(By.tagName("a"));
 		String linkTexts[]= new String[allLinks.size()];
@@ -113,7 +113,7 @@ public class AccessForms {
 				System.out.println("Link \""+ e+"\" is working.");
 			}
 			driver.navigate().back();	
-		}*/
+		}
 		
 		
 		/*driver.get("https://www.facebook.com");
@@ -179,6 +179,8 @@ public class AccessForms {
 		jsExec.executeScript("window.scrollBy(0,1000)");*/
 		
 		
+		
+		driver.get("");
 		
 		
 		//driver.quit();
