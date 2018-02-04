@@ -45,11 +45,7 @@ public class Toolsqa {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".container")));
 		
-		
-		driver.switchTo().
-		
-		
-		driver.quit();
+
 		
 	}
 }
