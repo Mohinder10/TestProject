@@ -41,6 +41,8 @@ public class Toolsqa {
 			e1.printStackTrace();
 		}*/
 		
+		
+		
 		driver.get("http://demo.guru99.com/test/ajax.html");
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".container")));
