@@ -19,7 +19,7 @@ public class MyClass {
 		WebDriver driver= new ChromeDriver();
 		WebDriverWait driverWait=new WebDriverWait(driver, 20);
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		driver.manage().window().maxim();
 		String baseUrl="http://demo.guru99.com/selenium/deprecated.html";
 		driver.get(baseUrl);
 		driver.switchTo().frame("classFrame");
