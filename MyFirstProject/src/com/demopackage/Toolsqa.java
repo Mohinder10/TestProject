@@ -1,4 +1,4 @@
-package newpackage;
+package com.demopackage;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,12 +42,13 @@ public class Toolsqa {
 		}*/
 		
 		
-		
+		/*
 		driver.get("http://demo.guru99.com/test/ajax.html");
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".container")));
+		*/
 		
-
+		
 		
 	}
 }

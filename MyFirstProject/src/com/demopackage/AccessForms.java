@@ -1,4 +1,4 @@
-package newpackage;
+package com.demopackage;
 
 import java.awt.Window;
 import java.io.File;
