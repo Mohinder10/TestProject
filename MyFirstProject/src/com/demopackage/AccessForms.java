@@ -5,20 +5,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 /*import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -32,7 +40,7 @@ public class AccessForms {
 	public static void main(String[] args) throws IOException {
 		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\mohin\\Desktop\\Driver_Server\\chromedriver.exe");
-		WebDriver driver= new ChromeDriver();
+		WebDriver driver=new ChromeDriver();
 		
 		/*driver.get("http://demo.guru99.com/selenium/webform/login.html");
 		WebElement email= driver.findElement(By.name("email"));
@@ -93,12 +101,12 @@ public class AccessForms {
 				.withTimeout(30, TimeUnit.SECONDS) 			
 				.pollingEvery(5, TimeUnit.SECONDS);*/	
 		
-		WebDriverWait wait = new WebDriverWait(driver,20);		
+		/*WebDriverWait wait = new WebDriverWait(driver,20);		
 		driver.get("http://demo.guru99.com/selenium/newtours/");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
-		
+		*/
 		//waitFluent.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td[4]/a")));
-		int i=0;
+		/*int i=0;
 		List<WebElement> allLinks= driver.findElements(By.tagName("a"));
 		String linkTexts[]= new String[allLinks.size()];
 		for(WebElement e : allLinks){
@@ -113,7 +121,7 @@ public class AccessForms {
 				System.out.println("Link \""+ e+"\" is working.");
 			}
 			driver.navigate().back();	
-		}
+		}*/
 		
 		
 		/*driver.get("https://www.facebook.com");
@@ -180,7 +188,39 @@ public class AccessForms {
 		
 		
 		
-		driver.get("");
+		/*driver.get("http://demo.guru99.com/test/guru99home/");
+		JavascriptExecutor js= (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
+		WebElement element = driver.findElement(By.id("philadelphia-field-submit"));
+		js.executeScript("arguments[0].scrollIntoView();", element);*/
+		
+		/*
+		String PROXY = "199.201.125.147:8080";
+		 
+		Proxy proxy = new Proxy();
+		proxy.setHttpProxy(PROXY)
+		 .setFtpProxy(PROXY)
+		 .setSslProxy(PROXY);
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability(CapabilityType.PROXY, proxy);
+		driver=new ChromeDriver(cap);*/
+		
+		String url="https://www.google.com";
+		driver.get(url);
+		String response = "";
+		HttpsURLConnection connection = (HttpsURLConnection)(new URL(url).openConnection());
+
+		try
+		{
+			connection.connect();
+			response = connection.getResponseMessage();	        
+			connection.disconnect();
+
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(response);
 		
 		
 		//driver.quit();
