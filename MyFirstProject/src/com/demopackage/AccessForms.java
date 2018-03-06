@@ -1,6 +1,9 @@
 package com.demopackage;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.awt.Window;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +17,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import jxl.Sheet;
+import jxl.Workbook;
+
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,17 +29,18 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 /*import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;*/
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 /*import com.google.common.collect.ImmutableBiMap.Builder;*/
 
 public class AccessForms {
@@ -42,7 +50,7 @@ public class AccessForms {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\mohin\\Desktop\\Driver_Server\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		
-		/*driver.get("http://demo.guru99.com/selenium/webform/login.html");
+		driver.get("http://demo.guru99.com/selenium/webform/login.html");
 		WebElement email= driver.findElement(By.name("email"));
 		WebElement password= driver.findElement(By.name("passwd"));
 		email.sendKeys("mohinderbatra");
@@ -51,7 +59,7 @@ public class AccessForms {
 		
 		driver.get("http://demo.guru99.com/selenium/newtours/register.php");
 		Select drpDwn= new Select(driver.findElement(By.name("country")));
-		drpDwn.selectByIndex(3);*/
+		drpDwn.selectByIndex(3);
 		
 		/*driver.get("http://demo.guru99.com/test/radio.html");
 		WebElement radio1= driver.findElement(By.id("vfb-7-1"));
@@ -96,7 +104,7 @@ public class AccessForms {
 		}*/
 		
 		//Explicit & Fluent wait
-		String underConst= "Under Construction: Mercury Tours";
+		//String underConst= "Under Construction: Mercury Tours";
 		/*Wait waitFluent = new FluentWait(driver)							
 				.withTimeout(30, TimeUnit.SECONDS) 			
 				.pollingEvery(5, TimeUnit.SECONDS);*/	
@@ -131,7 +139,7 @@ public class AccessForms {
 		Action actionEmail = builder
 				.moveToElement(email)
 				.click()
-				.keyDown(email, Keys.SHIFT)
+				.keyDown(Keys.SHIFT)
 				.sendKeys("hello")
 				.keyUp(email, Keys.SHIFT)
 				.doubleClick(email)
@@ -205,9 +213,9 @@ public class AccessForms {
 		cap.setCapability(CapabilityType.PROXY, proxy);
 		driver=new ChromeDriver(cap);*/
 		
-		String url="https://www.google.com";
+		String url="https://www.facebook1.com";
 		driver.get(url);
-		String response = "";
+		String response="";
 		HttpsURLConnection connection = (HttpsURLConnection)(new URL(url).openConnection());
 
 		try
@@ -221,6 +229,46 @@ public class AccessForms {
 		}
 		
 		System.out.println(response);
+		
+		/*WebDriverWait wait= new WebDriverWait(driver, 10);
+		Alert alert= wait.until(ExpectedConditions.alertIsPresent());
+		alert.authenticateUsing(new UsernamePasswordCredentials("",""));
+		*/
+		
+		/*WebElement source,target;
+		source= driver.findElement(By.id(""));
+		target= driver.findElement(By.id(""));
+		Actions actions= new Actions(driver);
+		actions.dragAndDrop(source, target);
+		Action action= actions.dragAndDrop(source, target).build();
+		
+		action.perform();*/
+		
+		
+		
+		//JavascriptExecutor js=(JavascriptExecutor)driver;
+		
+		/*ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		ChromeDriver chromeDriver = new ChromeDriver(options);
+		
+		chromeDriver.get("https://www.google.com");
+		System.out.println("No window will appear!!!");*/
+
+		/*FileInputStream fis = new FileInputStream("path of excel file");
+
+		Workbook wb = WorkbookFactory.create(fis);
+
+		Sheet s = wb.getSheet("sheetName");
+
+		String value = s.getRow(rowNum).getCell(cellNum).getStringCellValue(); // read data
+
+		s.getRow(rowNum).getCell(cellNum).setCellValue("value to be set"); //write data
+
+		FileOutputStream fos = new FileOutputStream(“path of file”);
+
+		wb.write(fos); //save file
+*/		
 		
 		//driver.quit();
 	}
